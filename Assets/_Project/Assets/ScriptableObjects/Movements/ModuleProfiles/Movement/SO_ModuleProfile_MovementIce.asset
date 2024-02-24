@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202d6b01dbe32884394d65102ae7bb53, type: 3}
+  m_Name: SO_ModuleProfile_MovementIce
+  m_EditorClassIdentifier: 
+  groundedSpeed: 40
+  speedCap: 23
+  acceleration: 1
+  deceleration: 1.2
+  turnAroundAcceleration: 0.5
+  airControl: 3
+  timeAfterAirbornToDecelerate: 0.1
+  decelerationCurveLinkedToAirbornVelocity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00000052154064
+      value: 50
+      inSlope: -0.024544045
+      outSlope: -0.024544045
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.17630593
+    - serializedVersion: 3
+      time: 8.162292
+      value: 5.7774057
+      inSlope: -1.7626255
+      outSlope: -1.7626255
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19035038
+    - serializedVersion: 3
+      time: 13
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  accelerationLinkedToVelocity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.011029428
+      value: 0.9780605
+      inSlope: 0.062476993
+      outSlope: 0.062476993
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.21808407
+    - serializedVersion: 3
+      time: 0.9949439
+      value: 0.045022845
+      inSlope: -0.30535507
+      outSlope: -0.30535507
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.7397389
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

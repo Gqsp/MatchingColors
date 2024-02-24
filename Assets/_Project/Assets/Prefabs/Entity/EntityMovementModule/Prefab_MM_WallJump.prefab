@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5558398767624451734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5558398767624451729}
+  - component: {fileID: 5558398767624451730}
+  m_Layer: 0
+  m_Name: Prefab_MM_WallJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5558398767624451729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558398767624451734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5558398767624451730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558398767624451734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 524e6aeb7e539ce4d8ba53f9a30e95a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: WallJump
+  priority: 0
+  _profiles:
+    _defaultIndex: 0
+    _profiles:
+    - {fileID: 11400000, guid: b0e64aa0e1912974db94d4a0d4927cc2, type: 2}
+  WallClingLeft: {fileID: 11400000, guid: fd4e980402bfc1940819df2237f535ce, type: 2}
+  WallClingRight: {fileID: 11400000, guid: 6c8c5d365ee6ffe43a11bfdadc968059, type: 2}
+  Grounded: {fileID: 11400000, guid: 4be0e489900fdb645bd733baa7944a26, type: 2}
+  wallJumpParticles: {fileID: 6375346435935200666, guid: 6591512e6406df34997c3b9e1c6dc50a, type: 3}
+  wallSlideParticles: {fileID: 5274567606485693442, guid: 844eb242148a7b44fbcf4aa72713e245, type: 3}
+  wallLandParticles: {fileID: 0}
+  _moveModule: {fileID: 4559089911305557741, guid: 6db1516c981a8e2408a2ec7636a11293, type: 3}
+  _jumpModule: {fileID: -465010386634262490, guid: 6b94ccac757b2fe41a0aafc18647db32, type: 3}

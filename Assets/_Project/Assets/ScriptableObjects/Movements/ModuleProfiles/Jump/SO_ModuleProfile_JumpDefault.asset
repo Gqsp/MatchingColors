@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c34b57cff82cb4db0907d77e0394b0, type: 3}
+  m_Name: SO_ModuleProfile_JumpDefault
+  m_EditorClassIdentifier: 
+  jumpCount: 5
+  jumpCutOff: 0.2
+  flyCutOff: 0.8
+  coyoteTime: 0.03
+  jumpBuffer: 0.2
+  jumpForce: 30
+  minJumpForceBounceHoldJump: 55
+  minJumpForceBounceNoHold: 40
+  jumpAttenuation: 120
+  hoverJumpForce: 130
+  downwardForce: -5
+  downwardForceHover: -2
+  jumpHeight: 5
+  timeToApex: 0.5
+  downwardGravityMultiplier: 1000
+  bounceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: -0.032723494
+      outSlope: -0.032723494
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.09264287
+    - serializedVersion: 3
+      time: 100.28137
+      value: 1
+      inSlope: -0.0035722158
+      outSlope: -0.0035722158
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17560263
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hoverCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.72756356
+      outSlope: 0.72756356
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.18190297
+    - serializedVersion: 3
+      time: 1
+      value: 2.7
+      inSlope: 4.1225266
+      outSlope: 4.1225266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.076084316
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
