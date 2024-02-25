@@ -25,10 +25,11 @@ public class MainMenuManager : MonoBehaviour
     
     private void Start()
     {
-        var hs = PlayerPrefs.GetFloat("NormalBoiHighscore", 0);
-        var hsSB =PlayerPrefs.GetFloat("SlipperyBoiHighscore", 0);
-        var hsBB = PlayerPrefs.GetFloat("BouncyBoiHighscore", 0);
-        
+        // Load high scores
+        var hsNormal = PlayerPrefs.GetFloat("NormalBoiHighscore", 0);
+        var hsSlippery = PlayerPrefs.GetFloat("SlipperyBoiHighscore", 0);
+        var hsBouncy = PlayerPrefs.GetFloat("BouncyBoiHighscore", 0);
+
         if (GameData.menuLoadMode == MenuLoadMode.Startup)
         {
             _mainMenu.SetActive(true);
@@ -39,52 +40,64 @@ public class MainMenuManager : MonoBehaviour
             _mainMenu.SetActive(false);
             _gameEnd.SetActive(true);
             var highscoreInMode = 0f;
-            
+
             switch (GameData.startMode)
             {
                 case StartMode.Normal:
-                    _gameEndText.color = Color.white;
-                    hs = GameData.timer > hs ? GameData.timer : hs;
-                    highscoreInMode = hs;
-                    PlayerPrefs.SetFloat("NormalBoiHighscore", highscoreInMode);
+                    UpdateModeUI(ref hsNormal, ref highscoreInMode, Color.white);
                     break;
                 case StartMode.Slippery:
-                    _gameEndText.color = new Color(0, 0.5f, 1);
-                    hsSB = GameData.timer > hsSB ? GameData.timer : hsSB;
-                    highscoreInMode = hsSB;
-                    PlayerPrefs.SetFloat("SlipperyBoiHighscore", highscoreInMode);
+                    UpdateModeUI(ref hsSlippery, ref highscoreInMode, new Color(0, 0.5f, 1));
                     break;
                 case StartMode.Bouncy:
-                    _gameEndText.color = new Color(1, 0.5f, 0);
-                    hsBB = GameData.timer > hsBB ? GameData.timer : hsBB;
-                    highscoreInMode = hsBB;
-                    PlayerPrefs.SetFloat("BouncyBoiHighscore", highscoreInMode);
+                    UpdateModeUI(ref hsBouncy, ref highscoreInMode, new Color(1, 0.5f, 0));
                     break;
             }
-            
+
             _gameEndTimer.text = "Time : " + TimeSpan.FromSeconds(GameData.timer).ToString("mm':'ss'.'fff");
             _gameEndBestTimer.text = "Best Time : " + TimeSpan.FromSeconds(highscoreInMode).ToString("mm':'ss'.'fff");
             _gameEndDeaths.text = "Deaths : " + GameData.deaths;
             _gameEndCollectables.text = "Watermelons : " + GameData.collectables + " / 9";
             
             _endGameFirstSelected.Select();
+            
         }
-        
-        if (hs > 0)
-        {
-            _sliperyBoiStartButton.interactable = true;
-        }
-        
-        if (hsSB > 0)
-        {
-            _bouncyBoiStartButton.interactable = true;
-        }
-        
-        _normalStartText.text = $"NORMAL BOI - {TimeSpan.FromSeconds(hs).ToString("mm':'ss'.'fff")}";
-        _sliperyStartText.text = $"SLIPERY BOI - {TimeSpan.FromSeconds(hsSB).ToString("mm':'ss'.'fff")}";
-        _bouncyStartText.text = $"BOUNCY BOI - {TimeSpan.FromSeconds(hsBB).ToString("mm':'ss'.'fff")}";
+
+        _sliperyBoiStartButton.interactable = hsNormal > 0;
+        _bouncyBoiStartButton.interactable = hsSlippery > 0;
+
+        UpdateStartText(hsNormal, hsSlippery, hsBouncy);
         
         PlayerPrefs.Save();
+    }
+
+    private void UpdateModeUI(ref float currentHighscore, ref float highscoreInMode, Color textColor)
+    {
+        _gameEndText.color = textColor;
+        highscoreInMode = currentHighscore != 0 ? Mathf.Min(GameData.timer, currentHighscore) : GameData.timer;
+        if (!Mathf.Approximately(highscoreInMode, currentHighscore))
+        {
+            PlayerPrefs.SetFloat(GetModeKey(GameData.startMode), highscoreInMode);
+            currentHighscore = highscoreInMode;
+        }
+    }
+
+    private void UpdateStartText(float hs, float hsSB, float hsBB)
+    {
+        _normalStartText.text = $"NORMAL BOI - {TimeSpan.FromSeconds(hs):mm':'ss'.'fff}";
+        _sliperyStartText.text = $"SLIPERY BOI - {TimeSpan.FromSeconds(hsSB):mm':'ss'.'fff}";
+        _bouncyStartText.text = $"BOUNCY BOI - {TimeSpan.FromSeconds(hsBB):mm':'ss'.'fff}";
+    }
+
+    private static string GetModeKey(StartMode mode)
+    {
+        return mode switch
+        {
+            StartMode.Normal => "NormalBoiHighscore",
+            StartMode.Slippery => "SlipperyBoiHighscore",
+            StartMode.Bouncy => "BouncyBoiHighscore",
+            _ => ""
+        };
     }
 
     public void StartGame(int mode)
